@@ -17,9 +17,18 @@ class HomeView extends View {
 
     buildHeroResumeHref(profile) {
         const lang = PortfolioI18n.getLang();
-        const resumes = profile.resumes || [];
-        const match = resumes.find(r => r.lang === lang) || resumes.find(r => r.lang === 'en') || resumes[0];
-        return match ? match.url : '#';
+        return Model.getBaseUrl() + 'resume/pdf?lang=' + encodeURIComponent(lang);
+    }
+
+    buildDynamicResumes() {
+        const base = Model.getBaseUrl();
+        const lang = PortfolioI18n.getLang();
+        return [
+            { lang: 'pt', label: 'Português PDF ↓', url: base + 'resume/pdf?lang=pt' },
+            { lang: 'en', label: 'English PDF ↓', url: base + 'resume/pdf?lang=en' },
+            { lang: 'es', label: 'Español PDF ↓', url: base + 'resume/pdf?lang=es' },
+            { lang: 'preview', label: (lang === 'en' ? 'Preview A4 ↗' : (lang === 'es' ? 'Vista previa A4 ↗' : 'Visualizar A4 ↗')), url: base + 'resume/preview?lang=' + encodeURIComponent(lang), preview: true }
+        ];
     }
 
     buildProjectCardData(p) {
@@ -215,12 +224,13 @@ class HomeView extends View {
         });
 
         // 07. Contact
+        const contactProfile = Object.assign({}, profile, { resumes: this.buildDynamicResumes() });
         const contactHtml = R.contactSection({
             indexLabel: PortfolioI18n.t('navContact'),
             titleHtml: PortfolioI18n.t('contactTitle'),
             desc: PortfolioI18n.t('contactDesc'),
             availability: PortfolioI18n.pick(profile.availability),
-            profile: profile,
+            profile: contactProfile,
             resumesTitle: PortfolioI18n.t('resumes')
         });
 

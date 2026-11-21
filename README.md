@@ -12,20 +12,31 @@ Portfólio pessoal e plataforma de currículo de **Alex de Oliveira Reis** ([ale
 ## Executando localmente
 
 ```bash
-# 1. Copie os arquivos de ambiente (caso ainda não existam)
+# 1. Instale as dependências PHP da API (Dompdf para geração dinâmica de PDF)
+cd kore-api && composer install && cd ..
+
+# 2. Copie os arquivos de ambiente (caso ainda não existam)
 cp kore-api/.env.example kore-api/.env
 cp kore-front/.env.example kore-front/.env
 
-# 2. Execute migrations, geração de models e seed do banco SQLite
+# 3. Execute migrations, geração de models e seed do banco SQLite
 ./kore.bat migrate
 ./kore.bat make:models
 ./kore.bat seed
 
-# 3. Suba API (porta 8000) e Frontend (porta 3000)
+# 4. Suba API (porta 8000) e Frontend (porta 3000)
 ./kore.bat dev
 ```
 
 Acesse `http://localhost:3000` (Frontend) e `http://localhost:8000/docs` (Documentação OpenAPI).
+
+## Gerador Dinâmico de Currículo em PDF (Fase 3)
+
+O currículo em PDF é gerado dinamicamente em **PT, EN ou ES** via Dompdf a partir dos dados atualizados no SQLite, preservando o layout executivo A4:
+
+- **Download direto:** `GET http://localhost:8000/resume/pdf?lang=pt|en|es&include_catalog=1&include_featured=1`
+- **Pré-visualização A4 / Impressão:** `GET http://localhost:8000/resume/preview?lang=pt|en|es`
+- **Painel Admin:** aba **Currículo PDF** (`http://localhost:3000/#/admin/resume`) com prévia ao vivo em iframe e opções de inclusão de catálogo e páginas de produtos em destaque.
 
 ## Painel Administrativo (Fase 2)
 
@@ -43,7 +54,7 @@ Acesse `http://localhost:3000/#/admin` (ou `#/login`) para gerenciar todo o cont
 
 - **Fase 1 (concluída):** Portabilidade completa para Kore Framework + SQLite, correção de bugs/traduções PT/EN/ES, componentes Bootstrap modulares e página explicativa dinâmica de projetos (`#/projeto/:slug`).
 - **Fase 2 (concluída):** Painel administrativo autenticado (`#/admin`) com `WriteAuthMiddleware` / `AuthMiddleware` e CRUD completo para experiências, skills, formação/cursos, perfil e sistemas (com página explicativa, link e vídeo).
-- **Fase 3 (próxima):** Gerador dinâmico de currículo em PDF a partir dos dados atualizados no banco.
+- **Fase 3 (concluída):** Gerador dinâmico de currículo em PDF (Dompdf + pré-visualização A4) em PT/EN/ES consumindo os dados vivos do SQLite e integrado ao portfólio público e ao painel `#/admin/resume`.
 
 ## Licença
 

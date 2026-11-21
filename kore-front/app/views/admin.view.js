@@ -48,6 +48,9 @@ class AdminView extends View {
             case 'profile':
                 contentHtml = AdminResumePanels.renderProfile(this.state.profile);
                 break;
+            case 'resume':
+                contentHtml = AdminResumePdfPanel.render();
+                break;
             default:
                 contentHtml = this.renderOverview();
                 break;
@@ -95,7 +98,8 @@ class AdminView extends View {
                 R.a('<i class="bi bi-briefcase me-1"></i>Gerenciar Experiências', '#/admin/experiences', '_self', 'btn btn-outline-dark btn-sm px-3') +
                 R.a('<i class="bi bi-cpu me-1"></i>Gerenciar Skills', '#/admin/skills', '_self', 'btn btn-outline-dark btn-sm px-3') +
                 R.a('<i class="bi bi-mortarboard me-1"></i>Formação & Cursos', '#/admin/education', '_self', 'btn btn-outline-dark btn-sm px-3') +
-                R.a('<i class="bi bi-person-gear me-1"></i>Editar Perfil / LinkedIn / Senha', '#/admin/profile', '_self', 'btn btn-outline-secondary btn-sm px-3')
+                R.a('<i class="bi bi-person-gear me-1"></i>Editar Perfil / LinkedIn / Senha', '#/admin/profile', '_self', 'btn btn-outline-secondary btn-sm px-3') +
+                R.a('<i class="bi bi-file-earmark-pdf me-1"></i>Gerar Currículo PDF', '#/admin/resume', '_self', 'btn btn-outline-danger btn-sm px-3')
             )
         );
 
@@ -124,6 +128,8 @@ class AdminView extends View {
             AdminResumePanels.bindEducation(this.state.education, reloadWithFlash);
         } else if (this.section === 'profile') {
             AdminResumePanels.bindProfile(this.state.profile, reloadWithFlash);
+        } else if (this.section === 'resume') {
+            AdminResumePdfPanel.bind();
         }
     }
 }

@@ -592,6 +592,65 @@
                 }
             }
         },
+        "/resume/{id}": {
+            "get": {
+                "tags": [
+                    "Resume"
+                ],
+                "summary": "Executa acao get em Resume",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/resume/preview": {
+            "get": {
+                "tags": [
+                    "Resume"
+                ],
+                "summary": "Executa acao get_preview em Resume",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                }
+            }
+        },
+        "/resume/pdf": {
+            "get": {
+                "tags": [
+                    "Resume"
+                ],
+                "summary": "Executa acao get_pdf em Resume",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                }
+            }
+        },
         "/skills/{id}": {
             "get": {
                 "tags": [

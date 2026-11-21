@@ -2,7 +2,7 @@
  * AdminController — Controlador autenticado das rotas #/admin e #/admin/:section.
  */
 class AdminController extends Controller {
-    static VALID_SECTIONS = ['overview', 'projects', 'experiences', 'skills', 'education', 'profile'];
+    static VALID_SECTIONS = ['overview', 'projects', 'experiences', 'skills', 'education', 'profile', 'resume'];
 
     constructor(params = {}) {
         super(params);

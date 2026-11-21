@@ -47,7 +47,8 @@ const AdminRenderer = {
             { key: 'experiences', label: 'Experiências', icon: 'bi-briefcase' },
             { key: 'skills', label: 'Skills', icon: 'bi-cpu' },
             { key: 'education', label: 'Formação & Cursos', icon: 'bi-mortarboard' },
-            { key: 'profile', label: 'Perfil & Senha', icon: 'bi-person-gear' }
+            { key: 'profile', label: 'Perfil & Senha', icon: 'bi-person-gear' },
+            { key: 'resume', label: 'Currículo PDF', icon: 'bi-file-earmark-pdf' }
         ];
 
         const navHtml = tabs.map(t => {

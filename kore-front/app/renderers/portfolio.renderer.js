@@ -426,7 +426,13 @@ class PortfolioRenderer extends BootstrapRenderer {
         }
 
         let downloads = (profile.resumes || []).map(r =>
-            this.a(PortfolioI18n.escapeHtml(r.label), r.url, '_self', 'pf-download-link', { download: '' })
+            this.a(
+                PortfolioI18n.escapeHtml(r.label),
+                r.url,
+                r.preview ? '_blank' : '_self',
+                'pf-download-link',
+                r.preview ? { rel: 'noopener noreferrer' } : { download: '' }
+            )
         ).join('');
 
         let downloadsBar = this.div(
