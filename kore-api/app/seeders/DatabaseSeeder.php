@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../../kore/Seeder.php';
 require_once __DIR__ . '/../../kore/Model.php';
+require_once __DIR__ . '/PortfolioSeeder.php';
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,5 +33,8 @@ class DatabaseSeeder extends Seeder
         } catch (Exception $e) {
             echo "  -> Erro ao criar usuario admin: " . $e->getMessage() . "\n";
         }
+
+        $portfolioSeeder = new PortfolioSeeder();
+        $portfolioSeeder->run();
     }
 }
