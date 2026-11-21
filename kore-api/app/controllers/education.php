@@ -122,7 +122,8 @@ class Education extends Controller
         $in = $this->request->all();
         $titlePt = trim((string) ($in['title_pt'] ?? ''));
         $detailsPt = trim((string) ($in['details_pt'] ?? ''));
-        $type = in_array($in['item_type'] ?? 'degree', ['degree', 'course'], true) ? $in['item_type'] : 'degree';
+        $rawType = (string) ($in['item_type'] ?? 'degree');
+        $type = in_array($rawType, ['degree', 'course'], true) ? $rawType : 'degree';
 
         return [
             'item_type' => $type,

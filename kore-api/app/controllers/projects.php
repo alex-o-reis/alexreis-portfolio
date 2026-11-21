@@ -173,6 +173,11 @@ class Projects extends Controller
         $detailEn = $this->encodeDetail($in['detail_en'] ?? ($in['detail']['en'] ?? null)) ?: $detailPt;
         $detailEs = $this->encodeDetail($in['detail_es'] ?? ($in['detail']['es'] ?? null)) ?: $detailPt;
 
+        $themeKey = trim((string) ($in['theme_key'] ?? 'default'));
+        if (!in_array($themeKey, ['default', 'satwa', 'kreww'], true)) {
+            $themeKey = 'default';
+        }
+
         return [
             'slug' => $slug,
             'name_pt' => $namePt,
@@ -194,7 +199,7 @@ class Projects extends Controller
             'detail_json_en' => $detailEn,
             'detail_json_es' => $detailEs,
             'cover_image' => trim((string) ($in['cover_image'] ?? '')) ?: null,
-            'theme_key' => in_array($in['theme_key'] ?? 'default', ['default', 'satwa', 'kreww'], true) ? $in['theme_key'] : 'default',
+            'theme_key' => $themeKey,
             'system_url' => trim((string) ($in['system_url'] ?? '')) ?: null,
             'video_url' => trim((string) ($in['video_url'] ?? '')) ?: null,
             'is_featured' => !empty($in['is_featured']) ? 1 : 0,
