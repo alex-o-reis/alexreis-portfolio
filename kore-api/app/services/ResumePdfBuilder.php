@@ -685,11 +685,15 @@ body { background: #e8eef2; }
 }
 .tb-btn-light { background: #ffffff; color: #0a182a; }
 .tb-btn-teal { background: #148b7e; color: #ffffff; }
+@media screen and (max-width: 840px) {
+    .sheet-wrap { padding: 12px 0 30px; overflow-x: hidden; }
+    .page { zoom: 0.86; }
+}
 @media print {
     .no-print { display: none !important; }
     body { background: #ffffff; }
     .sheet-wrap { padding: 0; }
-    .page { margin: 0; box-shadow: none; }
+    .page { margin: 0; box-shadow: none; zoom: 1; }
 }
 PREVIEW;
 
