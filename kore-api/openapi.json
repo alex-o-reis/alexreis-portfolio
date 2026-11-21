@@ -85,6 +85,60 @@
                 ]
             }
         },
+        "/education/{id}": {
+            "get": {
+                "tags": [
+                    "Education"
+                ],
+                "summary": "Executa acao get em Education",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/experiences/{id}": {
+            "get": {
+                "tags": [
+                    "Experiences"
+                ],
+                "summary": "Executa acao get em Experiences",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
         "/index/{id}": {
             "get": {
                 "tags": [
@@ -112,12 +166,12 @@
                 ]
             }
         },
-        "/products/{id}": {
+        "/portfolio/{id}": {
             "get": {
                 "tags": [
-                    "Products"
+                    "Portfolio"
                 ],
-                "summary": "Executa acao get em Products",
+                "summary": "Executa acao get em Portfolio",
                 "responses": {
                     "200": {
                         "description": "Operacao realizada com sucesso"
@@ -139,12 +193,12 @@
                 ]
             }
         },
-        "/products": {
-            "post": {
+        "/profile/{id}": {
+            "get": {
                 "tags": [
-                    "Products"
+                    "Profile"
                 ],
-                "summary": "Executa acao post em Products",
+                "summary": "Executa acao get em Profile",
                 "responses": {
                     "200": {
                         "description": "Operacao realizada com sucesso"
@@ -153,16 +207,71 @@
                         "description": "Requisicao invalida"
                     }
                 },
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object"
-                            }
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
                         }
                     }
-                }
+                ]
+            }
+        },
+        "/projects/{id}": {
+            "get": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Executa acao get em Projects",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/skills/{id}": {
+            "get": {
+                "tags": [
+                    "Skills"
+                ],
+                "summary": "Executa acao get em Skills",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             }
         }
     },
