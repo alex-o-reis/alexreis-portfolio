@@ -17,7 +17,7 @@ class ProjectDetailView extends View {
         const name = PortfolioI18n.pick(p.name);
         const summary = PortfolioI18n.pick(p.summary);
 
-        document.title = name + ' — Alex Reis | Portfolio';
+        document.title = name + ' — Alex Reis | ' + PortfolioI18n.t('navPortfolio');
 
         const heroHtml = R.projectDetailHero({
             eyebrow: detail.eyebrow || PortfolioI18n.catLabel(p.category),

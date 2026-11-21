@@ -62,6 +62,7 @@ class HomeView extends View {
         const profile = this.data.profile || {};
         const lang = PortfolioI18n.getLang();
         const summary = (profile.summary && (profile.summary[lang] || profile.summary.en)) || {};
+        document.title = PortfolioI18n.t('pageTitle');
 
         // 00. Hero
         const heroHtml = R.heroSection({
@@ -147,7 +148,7 @@ class HomeView extends View {
             ctaText: PortfolioI18n.t('featuredCta'),
             href: '#/projeto/' + encodeURIComponent(p.slug)
         }));
-        const featuredHtml = R.featuredProductsSection(promoTiles);
+        const featuredHtml = R.featuredProductsSection(promoTiles, PortfolioI18n.t('featuredOverline'));
 
         // 04. Portfolio + Other Tools (com filtro 'platform' e #otherToolsGrid garantido)
         const filterDefs = [

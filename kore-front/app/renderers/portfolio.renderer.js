@@ -226,11 +226,11 @@ class PortfolioRenderer extends BootstrapRenderer {
         return this.div('col-md-6', tile);
     }
 
-    featuredProductsSection(tiles = []) {
+    featuredProductsSection(tiles = [], ariaLabel = 'Featured products') {
         if (!tiles.length) return '';
         return this.element(
             'section',
-            { class: 'pt-5 pb-2', 'aria-label': 'Featured products' },
+            { class: 'pt-5 pb-2', 'aria-label': PortfolioI18n.escapeHtml(ariaLabel) },
             this.div('container pf-container', this.div('row g-4', tiles.map(t => this.promoTile(t)).join('')))
         );
     }
@@ -475,7 +475,7 @@ class PortfolioRenderer extends BootstrapRenderer {
             ));
         }
         actionBtns.push(this.a(
-            this.span('', PortfolioI18n.escapeHtml(backLabel)) + this.span('', '←'),
+            this.span('', PortfolioI18n.escapeHtml(backLabel.replace(/^←\s*/, ''))) + this.span('', '←'),
             '#/',
             '_self',
             'pf-btn-secondary'
