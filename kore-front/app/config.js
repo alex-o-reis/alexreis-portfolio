@@ -1,23 +1,20 @@
 /**
- * Configuração Geral da Aplicação Frontend (Userspace)
+ * Configuracao Geral da Aplicacao Frontend (Userspace) — Alex Reis Portfolio
  */
 const KoreConfig = {
-    APP_NAME: 'Kore App',
-    API_URL: 'http://localhost:8000/', // Endereço da API kore-api
+    APP_NAME: 'Alex Reis — Portfolio',
+    API_URL: window.KORE_API_URL || 'http://localhost:8000/',
     DEFAULT_ROUTE: '#/',
-    
-    // Rotas da Aplicação
+    TEMPLATE_PATH: 'templates/portfolio/template.html',
+
+    // Rotas SPA da Aplicacao
     ROUTES: [
-        { url: '#/', controller: 'DashboardController' },
-        { url: '#/login', controller: 'LoginController' },
-        { url: '#/products', controller: 'ProductsController' },
-        { url: '#/showcase', controller: 'ShowcaseController' }
+        { url: '#/', controller: 'HomeController' },
+        { url: '#/projeto/:slug', controller: 'ProjectDetailController' },
+        // Rota reservada para o painel administrativo da Fase 2
+        { url: '#/login', controller: 'LoginController' }
     ],
 
-    // Itens do Menu Lateral
-    MENU: [
-        { title: 'Dashboard', url: '#/', icon: 'bi-speedometer2', type: 'item' },
-        { title: 'UI Showcase', url: '#/showcase', icon: 'bi-palette2', type: 'item' },
-        { title: 'Produtos', url: '#/products', icon: 'bi-box-seam', type: 'item' }
-    ]
+    // Menu reservado para o painel administrativo futuro (Fase 2)
+    MENU: []
 };
