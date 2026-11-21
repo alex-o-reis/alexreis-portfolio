@@ -801,6 +801,57 @@ h1 em, h2 em {
     text-decoration: none;
 }
 
+.pf-footer-admin {
+    color: #6d8594;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.pf-footer-admin:hover {
+    color: var(--pf-mint);
+}
+
+/* Admin Panel (Fase 2) */
+.pf-admin-wrap {
+    background: #f4f7f8;
+    min-height: calc(100vh - 150px);
+}
+
+.pf-admin-banner {
+    background: linear-gradient(135deg, #0a182a 0%, #133147 100%);
+    color: #ffffff;
+}
+
+.pf-admin-tab {
+    color: #b7cdd8 !important;
+    font-size: 12.5px;
+    font-weight: 700;
+    border-radius: 8px !important;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.06);
+    transition: all 0.15s ease;
+}
+
+.pf-admin-tab:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.pf-admin-tab.active {
+    background: var(--pf-teal) !important;
+    color: #061321 !important;
+}
+
+.pf-admin-kpi {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pf-admin-kpi:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(10, 24, 42, 0.09) !important;
+}
+
 /* Project Detail Pages (Themeable: default / satwa / kreww) */
 .pf-detail-satwa {
     background: var(--satwa-paper);

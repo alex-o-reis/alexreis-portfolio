@@ -11,8 +11,9 @@ const KoreConfig = {
     ROUTES: [
         { url: '#/', controller: 'HomeController' },
         { url: '#/projeto/:slug', controller: 'ProjectDetailController' },
-        // Rota reservada para o painel administrativo da Fase 2
-        { url: '#/login', controller: 'LoginController' }
+        { url: '#/login', controller: 'LoginController' },
+        { url: '#/admin', controller: 'AdminController' },
+        { url: '#/admin/:section', controller: 'AdminController' }
     ],
 
     // Menu reservado para o painel administrativo futuro (Fase 2)
