@@ -44,6 +44,7 @@ class EducationItem extends Model
                 'es' => $row['details_es'],
             ],
             'display_order' => (int) $row['display_order'],
+            'is_visible' => (bool) $row['is_visible'],
         ];
     }
 }

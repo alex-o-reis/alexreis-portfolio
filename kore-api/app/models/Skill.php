@@ -36,6 +36,7 @@ class Skill extends Model
             ],
             'is_featured' => (bool) $row['is_featured'],
             'display_order' => (int) $row['display_order'],
+            'is_visible' => (bool) $row['is_visible'],
         ];
     }
 }

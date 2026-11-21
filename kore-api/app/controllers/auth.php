@@ -11,11 +11,14 @@ class Auth extends Controller
         $password = $this->request->input('password');
 
         if (!$username || !$password) {
-            return $this->error('Username e password são obrigatórios.', 400);
+            return $this->error('Usuário e senha são obrigatórios.', 400);
         }
 
         try {
-            $stmt = Model::query("SELECT * FROM users WHERE (username = ? OR email = ?) AND deleted_at IS NULL LIMIT 1", [$username, $username]);
+            $stmt = Model::query(
+                "SELECT * FROM users WHERE (username = ? OR email = ?) AND deleted_at IS NULL LIMIT 1",
+                [$username, $username]
+            );
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user && password_verify($password, $user['password'])) {
@@ -30,7 +33,7 @@ class Auth extends Controller
                 ]);
             }
         } catch (Exception $e) {
-            // Se tabela não existir ainda ou der erro
+            return $this->error('Erro ao autenticar: ' . $e->getMessage(), 500);
         }
 
         return $this->error('Usuário ou senha inválidos.', 401);
@@ -38,20 +41,64 @@ class Auth extends Controller
 
     public function get_me()
     {
-        $token = $this->request->bearerToken();
-        if (!$token) {
+        $user = $this->resolveAuthenticatedUser();
+        if (!$user) {
+            return $this->error('Sessão expirada ou inválida.', 401);
+        }
+
+        unset($user['password']);
+        return $this->json(['user' => $user]);
+    }
+
+    public function post_logout()
+    {
+        $user = $this->resolveAuthenticatedUser();
+        if ($user) {
+            Model::query("UPDATE users SET token = NULL WHERE id = ?", [$user['id']]);
+        }
+        return $this->json(['message' => 'Sessão encerrada com sucesso.']);
+    }
+
+    public function post_password()
+    {
+        $user = $this->resolveAuthenticatedUser();
+        if (!$user) {
             return $this->error('Não autenticado.', 401);
         }
 
+        $current = (string) $this->request->input('current_password', '');
+        $next = (string) $this->request->input('new_password', '');
+
+        if (!$current || !$next) {
+            return $this->error('Informe a senha atual e a nova senha.', 400);
+        }
+        if (strlen($next) < 6) {
+            return $this->error('A nova senha deve ter pelo menos 6 caracteres.', 422);
+        }
+        if (!password_verify($current, $user['password'])) {
+            return $this->error('Senha atual incorreta.', 403);
+        }
+
+        $hash = password_hash($next, PASSWORD_DEFAULT);
+        Model::query("UPDATE users SET password = ? WHERE id = ?", [$hash, $user['id']]);
+        return $this->json(['message' => 'Senha atualizada com sucesso.']);
+    }
+
+    private function resolveAuthenticatedUser(): ?array
+    {
+        $token = $this->request->bearerToken();
+        if (!$token) {
+            return null;
+        }
         try {
-            $stmt = Model::query("SELECT id, name, username, email, role, avatar, created_at FROM users WHERE token = ? AND deleted_at IS NULL LIMIT 1", [$token]);
+            $stmt = Model::query(
+                "SELECT * FROM users WHERE token = ? AND deleted_at IS NULL LIMIT 1",
+                [$token]
+            );
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if ($user) {
-                return $this->json(['user' => $user]);
-            }
-        } catch (Exception $e) {}
-
-        return $this->error('Sessão expirada ou inválida.', 401);
+            return $user ?: null;
+        } catch (Exception $e) {
+            return null;
+        }
     }
 }

@@ -98,6 +98,7 @@ class Project extends Model
             ],
             'case_icon' => $row['case_icon'],
             'display_order' => (int) $row['display_order'],
+            'is_published' => (bool) $row['is_published'],
         ];
     }
 }

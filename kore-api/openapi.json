@@ -58,6 +58,58 @@
                 }
             }
         },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Executa acao post_logout em Auth",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Executa acao post_password em Auth",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/docs/{id}": {
             "get": {
                 "tags": [
@@ -110,6 +162,92 @@
                         }
                     }
                 ]
+            },
+            "put": {
+                "tags": [
+                    "Education"
+                ],
+                "summary": "Executa acao put em Education",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Education"
+                ],
+                "summary": "Executa acao delete em Education",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/education": {
+            "post": {
+                "tags": [
+                    "Education"
+                ],
+                "summary": "Executa acao post em Education",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
             }
         },
         "/experiences/{id}": {
@@ -137,6 +275,92 @@
                         }
                     }
                 ]
+            },
+            "put": {
+                "tags": [
+                    "Experiences"
+                ],
+                "summary": "Executa acao put em Experiences",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Experiences"
+                ],
+                "summary": "Executa acao delete em Experiences",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/experiences": {
+            "post": {
+                "tags": [
+                    "Experiences"
+                ],
+                "summary": "Executa acao post em Experiences",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
             }
         },
         "/index/{id}": {
@@ -218,6 +442,41 @@
                         }
                     }
                 ]
+            },
+            "put": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Executa acao put em Profile",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
             }
         },
         "/projects/{id}": {
@@ -245,6 +504,92 @@
                         }
                     }
                 ]
+            },
+            "put": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Executa acao put em Projects",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Executa acao delete em Projects",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/projects": {
+            "post": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Executa acao post em Projects",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
             }
         },
         "/skills/{id}": {
@@ -272,6 +617,92 @@
                         }
                     }
                 ]
+            },
+            "put": {
+                "tags": [
+                    "Skills"
+                ],
+                "summary": "Executa acao put em Skills",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Skills"
+                ],
+                "summary": "Executa acao delete em Skills",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador do recurso",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/skills": {
+            "post": {
+                "tags": [
+                    "Skills"
+                ],
+                "summary": "Executa acao post em Skills",
+                "responses": {
+                    "200": {
+                        "description": "Operacao realizada com sucesso"
+                    },
+                    "400": {
+                        "description": "Requisicao invalida"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
             }
         }
     },

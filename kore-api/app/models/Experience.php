@@ -45,6 +45,7 @@ class Experience extends Model
             'highlights' => json_decode($row['highlights_json'] ?: '{}', true) ?: [],
             'tags' => json_decode($row['tags_json'] ?: '{}', true) ?: [],
             'display_order' => (int) $row['display_order'],
+            'is_visible' => (bool) $row['is_visible'],
         ];
     }
 }
