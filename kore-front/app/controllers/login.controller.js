@@ -1,4 +1,4 @@
-﻿/**
+/**
  * LoginController — Controlador de autenticacao para o painel administrativo (#/login).
  */
 class LoginController extends Controller {

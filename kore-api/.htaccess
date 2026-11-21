@@ -1,6 +1,24 @@
-﻿<IfModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Preserva cabecalho Authorization em Apache/FastCGI (Bearer Token)
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Bloqueia acesso direto a arquivos sensiveis
+    RewriteRule (^|/)\. - [F,L]
+
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php?url= [QSA,L]
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 </IfModule>
+
+<FilesMatch "\.(env|sqlite|sqlite3|db|log|sql|md|json|lock)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
